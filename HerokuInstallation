@@ -1,0 +1,46 @@
+First this repo has a few months and the package.json file needs an update, add this file the following pair of key values
+"engines": {
+    "node": "> = 11.0.0",
+    "npm": "> = 6.0.0"
+  }
+
+Second also note that version 4.4.0 of the dependency react-router-dom is no longer found
+you need to update the package.json file
+from the client folder and update the version to 5.1.2
+ "react-router-dom": "^ 5.1.2"
+
+Third you must create a database in mlab
+https://mlab.com/
+In the DB folder I provide you with json files that represent the collections in the database, try to import these files.
+I used robo3t to connect to mlab and import
+
+Finally, you need to provide Heroku with your own environment variable configuration; Mine doesn't work for you.
+in the config folder are the environment variables
+module.exports = {
+    MONGO_URI: process.env.MONGO_URI,
+    JWT_SECRET: process.env.JWT_SECRET,
+    JWT_SECRET_CART: process.env.JWT_SECRET_CART,
+    PAYPAL_MODE: process.env.PAYPAL_MODE,
+    PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID,
+    PAYPAL_CLIENT_SECRET: process.env.PAYPAL_CLIENT_SECRET,
+    PAYPAL_API: process.env.PAYPAL_API,
+    RETURN_URL: process.env.RETURN_URL,
+    CANCEL_URL: process.env.CANCEL_URL
+}
+On tab settings cklick on Reveal Config Vars button
+
+And then
+on heroku don't put any quote ' ' or doble quote " "
+
+MONGO_URI: "mongodb://YOUR-MLAB-db", like this  "mongodb://your_user:your_password@xxxx.mlab.com:xxxx/your_db_name"
+JWT_SECRET: "YOUR-SUPER-SECRET-KEY",
+JWT_SECRET_CART: "YOUR-SUPER-SECRET-CART-KEY",
+PAYPAL_MODE: "sandbox",
+PAYPAL_CLIENT_ID: "YOUR-PAYPAL-CLIENT-ID",
+PAYPAL_CLIENT_SECRET: "YOUR-PAYPAL-CLIENT-SECRET",
+PAYPAL_API: "https://api.sandbox.paypal.com",
+RETURN_URL: "https://your-heroku-app-name.herokuapp.com/payment",
+CANCEL_URL: "https://your-heroku-app-name.herokuapp.com"
+
+
+I hope, helped you. Thank you.
